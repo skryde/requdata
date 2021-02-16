@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 type htmlData struct {
@@ -13,6 +14,11 @@ type htmlData struct {
 }
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 
 		log.Println(req.Host)
@@ -51,5 +57,5 @@ func main() {
 		}
 	})
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

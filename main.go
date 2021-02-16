@@ -13,6 +13,10 @@ type htmlData struct {
 	Headers map[string][]string
 }
 
+func init() {
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -35,22 +35,8 @@ func main() {
 		data := htmlData{
 			Method:  req.Method,
 			Headers: req.Header,
+			QueryParams: req.URL.Query(),
 		}
-
-		var body []byte
-		_, err = req.Body.Read(body)
-		if err != nil {
-			log.Println("Error:", err)
-		}
-
-		if len(body) == 0 {
-			data.Body = "Empty body"
-
-		} else {
-			data.Body = string(body)
-		}
-
-		data.QueryParams = req.URL.Query()
 
 		err = tmpl.Execute(w, data)
 		if err != nil {

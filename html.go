@@ -28,14 +28,13 @@ var htmlString = `<!doctype html>
     {{ end }}
   </ul>
 
+  {{ if .QueryParams }}
   <h3>Query params</h3>
   <ul>
     {{ range $key, $value := .QueryParams }}
     <li>{{ $key }}: {{ $value }}</li>
     {{ end }}
   </ul>
-
-  <h3>Body</h3>
-  <p>{{ .Body }}</p>
+  {{ end }}
 </body>
 </html>`

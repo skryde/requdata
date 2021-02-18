@@ -11,6 +11,7 @@ type htmlData struct {
 	Method  string
 	Body    string
 	Headers map[string][]string
+	QueryParams map[string][]string
 }
 
 func init() {
@@ -24,12 +25,6 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-
-		log.Println(req.Host)
-		log.Println(req.Form)
-		log.Println(req.Proto)
-		log.Println(req.URL)
-		log.Println(req.Referer())
 
 		tmpl := template.New("template")
 		_, err := tmpl.Parse(htmlString)
@@ -54,6 +49,8 @@ func main() {
 		} else {
 			data.Body = string(body)
 		}
+
+		data.QueryParams = req.URL.Query()
 
 		err = tmpl.Execute(w, data)
 		if err != nil {

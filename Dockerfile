@@ -11,7 +11,7 @@ RUN go build -o out/requdata
 FROM alpine:3.16
 
 ENV TZ America/Montevideo
-ARG PORT 8080
+ENV PORT 8080
 
 RUN adduser -u 1000 -g 1000 --disabled-password requdata
 

@@ -12,8 +12,7 @@ FROM alpine:3.16
 
 ENV TZ America/Montevideo
 
-RUN addgroup --gid 1000 requdata
-RUN adduser --uid 1000 --gid 1000 --disabled-password requdata
+RUN adduser -u 1000 -g 1000 --disabled-password requdata
 
 COPY --from=builder out/requdata /app/
 

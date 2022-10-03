@@ -14,7 +14,7 @@ ENV TZ America/Montevideo
 
 RUN adduser -u 1000 -g 1000 --disabled-password requdata
 
-COPY --from=builder out/requdata /app/
+COPY --from=builder /app/src/out/requdata /app/
 
 WORKDIR /app
 

@@ -1,5 +1,8 @@
 FROM golang:1.19-alpine AS builder
 
+COPY . /app/src
+WORKDIR /app/src
+
 RUN go get -v -d
 
 RUN go build -o out/requdata

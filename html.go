@@ -16,6 +16,11 @@ var htmlString = `<!doctype html>
 
   <hr/>
 
+  <h3>Hostname</h3>
+  <ul>
+    <li>{{ .Hostname }}</li>
+  </ul>
+
   <h3>Method</h3>
   <ul>
     <li>{{ .Method }}</li>

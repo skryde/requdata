@@ -12,6 +12,7 @@ type htmlData struct {
 	Body    string
 	Headers map[string][]string
 	QueryParams map[string][]string
+	Hostname string
 }
 
 func init() {
@@ -32,10 +33,12 @@ func main() {
 			log.Println("Error:", err)
 		}
 
+		hostname, _ := os.Hostname()
 		data := htmlData{
 			Method:  req.Method,
 			Headers: req.Header,
 			QueryParams: req.URL.Query(),
+			Hostname: hostname,
 		}
 
 		err = tmpl.Execute(w, data)

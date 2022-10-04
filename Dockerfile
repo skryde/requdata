@@ -13,7 +13,7 @@ FROM alpine:3.16
 ENV TZ America/Montevideo
 ENV PORT 8080
 
-RUN adduser -u 1000 -g 1000 --disabled-password requdata
+#RUN adduser -u 1000 -g 1000 --disabled-password requdata
 
 COPY --from=builder /app/src/out/requdata /app/
 
@@ -21,6 +21,6 @@ WORKDIR /app
 
 RUN chown -R requdata:requdata .
 
-USER requdata
+#USER requdata
 
 ENTRYPOINT ["/app/requdata"]

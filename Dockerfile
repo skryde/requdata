@@ -19,7 +19,7 @@ COPY --from=builder /app/src/out/requdata /app/
 
 WORKDIR /app
 
-RUN chown -R requdata:requdata .
+#RUN chown -R requdata:requdata .
 
 #USER requdata
 
